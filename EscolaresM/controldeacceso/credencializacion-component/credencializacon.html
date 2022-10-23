@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html ng-app="credencializacion">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet"
+               href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+          <link rel="stylesheet" href="./credencializacion.css">
+          <link rel="icon"
+               href="https://web.escolaresmx.com/theme/img/icon.png">
+          <title>Credencialización</title>
+
+          <!--Angular-->
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+          <!--Bootrap-->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  
+          <!--Font awesome-->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha512-3M00D/rn8n+2ZVXBO9Hib0GKNpkm8MSUU/e2VNthDyBYxKWG+BftNYYcuEjXlyrSO637tidzMBXfE7sQm0INUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <script src="https://kit.fontawesome.com/d2cb8774a8.js" crossorigin="anonymous"></script>
+
+          <!--Component credencialización-->
+          <script src="./credencializacion.js"></script>
+          <style>
+          body{
+               background-color: #f5f5f5;
+               overflow-x: hidden;
+          }
+        </style>
+     </head>
+     <body ng-controller="credencializacioncontroller">
+          <div>
+               <div class="titles">
+                    <h1>Credencialización</h1>
+               </div>
+          </div>
+
+          <div class="row row-top responsive-grid-break responsive-sm">
+               <div class="col col-33">
+                    <div class="card" style="width: 353.33px;">
+                         <ul class="list-group list-group-flush">
+                              <div class="row d-flex flex-column mb-3">
+                                   <div class="col">
+                                        <button type="button"
+                                             class="btn-options"
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#optionsModal">
+                                             <div class="row">
+                                                  <div class="col icon">
+                                                       <i class="fa -solid
+                                                            fa-bars"></i>
+                                                  </div>
+                                                  <div class="col
+                                                       title-text-options">
+                                                       <h2>Opciones</h2>
+                                                  </div>
+                                                  <div class="col icon">
+                                                       <i class="fa -solid
+                                                            fa-ellipsis"></i>
+                                                  </div>
+                                             </div>
+                                        </button>
+                                        <hr>
+                                   </div>
+                                   <div class="col">
+                                        <div class="row">
+                                             <div class="col container-select">
+                                                  <p>Diseño</p>
+                                             </div>
+                                             <div class="col">
+                                                  <select
+                                                       ng-options="option.name
+                                                       for option in
+                                                       selection.options track
+                                                       by option.id"
+                                                       ng-model="selection.A_options"
+                                                       class="combobox">
+                                                       <!-- Opciones del Combo -->
+                                                  </select>
+                                             </div>
+                                        </div>
+                                        <hr>
+                                   </div>
+                                   <div class="col">
+                                        <input type="submit" value="Generar multiple" class="btn btn-primary btn-sm"></input>
+                              </div>
+                         </div>
+                    </ul>
+               </div>
+               <div class="containersearch" style="width: 353.33px; margin-top:
+                    10px;">
+                    <div class="input-group mb-3" style="width: 353.33px;
+                         padding-top: 10px;">
+                         <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa -regular fa-magnifying-glass"></i></span>
+                         </div>
+                         <input type="text" class="containersearchinput"
+                              ng-model="search_students" placeholder="Nombre, CURP, Matricula o UID" aria-label="Username"
+                              aria-describedby="basic-addon1"/>
+                    </div>
+               </div>
+               <div class="containeralumnos" style="width: 353.33px;">
+                    <div class="row containerstudents display-flex"
+                         ng-repeat="student in students |
+                         filter:search_students">
+                         <div class="col col-sm-2 studentsphoto">
+                              <img src="{{student.photo}}" style="width: 40px;
+                                   height: 40px;">
+                         </div>
+
+                         <div class="col col-8 students-info align-items-center">
+                              <button type="button" class="btn-student"
+                                   ng-click="ChangeView(student.id-1)">
+
+                                   <p>
+                                        {{student.lastname}} {{student.name}}
+                                        {{student.identification}}
+                                        {{student.rol}}
+                                        {{student.type}}
+                                        {{student.carrer}}
+                                   </p>
+
+                              </button>
+
+                         </div>
+                         <div class="col col-sm-2 icon-right2">
+                              <i class="fa -solid fa-chevron-right"></i>
+                         </div>
+                         <hr>
+                    </div>
+
+               </div>
+          </div>
+          <div class="col col-33">
+               <div class="info" ng-repeat="student in students"
+                    ng-if="student.view!='invisible'">
+                    <div class="col-lg-4">
+                         <div class="container_titles">
+                              <h2 class="h3">Historial</h2>
+                         </div>
+                         <div>
+                              <div class="containercredencial"
+                                   ng-repeat="credencial in students_credencial
+                                   | filter: {id_student:student.id}">
+                                   <div class="card " style="width: 26.7rem;">
+                                        <div class="card-body">
+                                             <h5 class="card-title">{{credencial.name}}</h5>
+                                             <div class="row">
+                                                  <div class="col-4 icon">
+                                                       <img
+                                                            src="{{credencial.photo}}"
+                                                            alt="">
+                                                  </div>
+                                                  <div class="col-7">
+                                                       <div class="row">
+                                                            <a
+                                                                 data-bs-toggle="modal"
+                                                                 href="#studentsModal"
+                                                                 role="button">
+                                                                 <div
+                                                                      class="col">
+                                                                      <p>Creada:
+                                                                           {{credencial.create}}
+                                                                           /
+                                                                           Modificada:
+                                                                           {{credencial.update}}</p>
+                                                                 </div>
+                                                            </a>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-1">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-camera"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <p>Tomar
+                                                                      fotografia</p>
+                                                                 <p>Subir a esta
+                                                                      credencial</p>
+                                                            </div>
+                                                            <div class="col-1 checkboxpicture">
+                                                                 <input type="checkbox" id="mycheck"><label for="mycheck"></label>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col"><p>Brillo</p></div>
+                                                            <div class="col">
+                                                                 <select
+                                                                      ng-options="option.name
+                                                                      for option
+                                                                      in
+                                                                      brillo.options
+                                                                      track by
+                                                                      option.id"
+                                                                      ng-model="brillo.A_options"
+                                                                      class="combobox">
+                                                                      <!-- Opciones del Combo -->
+                                                                 </select>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-1">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-file"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <p>Credencial
+                                                                      Duplex</p>
+                                                                 <p>Diseño
+                                                                      Frontal y
+                                                                      reverso</p>
+                                                            </div>
+                                                       </div>
+
+                                                  </div>
+
+                                             </div>
+
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="col col-75">
+               <div class="containerbuttons">
+                    <div class="card-body border-bottom"
+                         ng-if="view_camera==true">
+                         <div class="text-center">
+                              <video id="camera_video" class="img-fluid"
+                                   autoplay ng-if="camera_error==''"></video>
+                              <div class="text-center" ng-if="camera_error!=''">
+                                   <i class="fa-solid fa-triangle-exclamation
+                                        fs-1 text-warning"></i>
+                                   <p class="fs-3 m-0 fw-bold">{{camera_error}}</p>
+                              </div>
+
+                         </div>
+                    </div>
+                    <div class="btn-group buttons-group" role="group"
+                         aria-label="Basic example">
+                         <button type="button" class="btn btn-success btn-lg"
+                              ng-click="cameraOn()"><i class="fa -solid
+                                   fa-power-off"></i></button>
+                         <button type="button" class="btn btn-danger btn-lg"
+                              ng-click="cameraOff()"><i class="fa -solid
+                                   fa-power-off"></i></button>
+                         <button type="button" class="btn btn-primary btn-lg"
+                              ng-click="getSnapshot()"><i class="fa -regular
+                                   fa-camera"></i></button>
+                    </div>
+                    <div class="card-body border-top {{view_snapshot}}">
+                         <div class="text-center">
+                              <canvas style="display: none" id="canvas"
+                                   width="640" height="480"></canvas>
+                              <img id="Snapshot" class="img-fluid" src="" />
+                         </div>
+                    </div>
+               </div>
+
+               <div class="plus">
+                    <button type="button" class="btn btn-primary"
+                         data-bs-toggle="modal" data-bs-target="#plusmodal"
+                         id="plus-btn">
+                         <i class="fa-solid fa-plus"></i>
+                    </button>
+
+               </div>
+          </div>
+     </div>
+
+     <!--Vistas modales de credencialización-->
+     <!--Vista modal plus-->
+     <div class="modal fade" id="plusmodal" tabindex="-1"
+          aria-labelledby="plusmodalModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+               <div class="modal-content ">
+                    <div class="modal-header">
+                         <h1 class="modal-title fs-5" id="plusmodalModalLabel">Nuevo
+                              alumno</h1>
+                         <button type="button" class="btn-close"
+                              data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="container ">
+                              <div class="title_containermodal">
+                                   <p>Todos los datos son requeridos</p>
+                              </div>
+                              <hr>
+                              <div class="foreigner">
+                                   <div class="row ">
+                                        <div class="col">
+                                             <span>Extrajero</span>
+                                        </div>
+                                        <div class="col">
+                                             <select ng-options="option.name for
+                                                  option in foreigner.options
+                                                  track by option.id"
+                                                  ng-model="foreigner.A_options"
+                                                  class="combobox">
+                                                  <!-- Opciones del Combo -->
+                                             </select>
+                                        </div>
+                                   </div>
+                              </div>
+                              <hr>
+                              <div class="CURP d-flex flex-column">
+                                   <span>CURP</span>
+                                   <input type="text" placeholder="ESCRIBE LA
+                                        CURP Y PRESIONA ENTER PARA VALIDAR"
+                                        class="input">
+                              </div>
+                              <hr>
+                              <div class="paternalsurname d-flex flex-column">
+                                   <span>Apellido paterno</span>
+                                   <input type="text" placeholder="Apellido
+                                        paterno" class="input">
+                              </div>
+                              <hr>
+                              <div class="mothersurname d-flex flex-column">
+                                   <span>Apellido materno</span>
+                                   <input type="text" placeholder="Apellido
+                                        materno" class="input">
+                              </div>
+                              <hr>
+                              <div class="name d-flex flex-column">
+                                   <span>Nombre (s)</span>
+                                   <input type="text" placeholder="Nombre"
+                                        class="input">
+                              </div>
+                              <hr>
+                              <div class="registration d-flex flex-column">
+                                   <span>Matrícula</span>
+                                   <input type="text" placeholder="MATRICULA O
+                                        NUMERO DE CONTROL" class="input">
+                              </div>
+                              <hr>
+                              <div class="grade">
+                                   <div class="row">
+                                        <div class="col">
+                                             <span>Grado</span>
+                                        </div>
+                                        <div class="col">
+                                             <select ng-options="option.name for
+                                                  option in grade.options track
+                                                  by option.id"
+                                                  ng-model="grade.A_options"
+                                                  class="combobox">
+                                                  <!-- Opciones del Combo -->
+                                             </select>
+                                        </div>
+                                   </div>
+                              </div>
+                              <hr>
+                              <div class="group d-flex flex-column">
+                                   <span>Grupo</span>
+                                   <input type="text" placeholder="A,B,C"
+                                        class="input">
+                              </div>
+                              <hr>
+                              <div class="specialty">
+                                   <div class="row">
+                                        <div class="col">
+                                             <span>Carrera / Especialidad /
+                                                  Taller</span>
+                                        </div>
+                                        <div class="col">
+                                             <select ng-options="option.name for
+                                                  option in specialty.options
+                                                  track by option.id"
+                                                  ng-model="specialty.A_options"
+                                                  class="combobox">
+                                                  <!-- Opciones del Combo -->
+                                             </select>
+                                        </div>
+                                   </div>
+                              </div>
+                              <hr>
+                              <div class="shift">
+                                   <div class="row">
+                                        <div class="col">
+                                             <span>Turno</span>
+                                        </div>
+                                        <div class="col">
+                                             <select ng-options="option.name for
+                                                  option in shift.options track
+                                                  by option.id"
+                                                  ng-model="shift.A_options"
+                                                  class="combobox">
+                                                  <!-- Opciones del Combo -->
+                                             </select>
+                                        </div>
+                                   </div>
+                              </div>
+                              <hr>
+                         </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-success btn-save">Guardar</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <!--Modal options-->
+     <!-- Modal -->
+     <div class="modal fade" id="optionsModal" tabindex="-1"
+          aria-labelledby="optionsModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h1 class="modal-title fs-5" id="optionsModalLabel">Opciones</h1>
+                         <button type="button" class="btn-close"
+                              data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                         <div class="groups ">
+                              <div class="row ">
+                                   <a href="./grupodealumnos.html" class="d-flex
+                                        justify-content-between text">
+                                        <div class="col-2"><i class="fa -sharp
+                                                  fa-solid fa-people-group"></i></div>
+                                        <div class="col-9 "><p>Grupos</p></div>
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chevron-right"></i></div>
+                                   </a>
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="deliverables ">
+                              <div class="row ">
+                                   <a href="./credencialesparaentregar.html"
+                                        class="d-flex justify-content-between
+                                        text">
+                                        <div class="col-2"><i class="fa -regular
+                                                  fa-file"></i></div>
+                                        <div class="col-9">
+                                             <p>Entregables</p>
+                                             <p>Generar un reporte de
+                                                  credenciales a entregar</p>
+                                        </div>
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chevron-right"></i></div>
+                                   </a>
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="report ">
+                              <div class="row ">
+                                   <a href="./reporte.html" class="d-flex
+                                        justify-content-between text">
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chart-pie"></i></div>
+                                        <div class="col-9 "><p>Reporte</p></div>
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chevron-right"></i></div>
+                                   </a>
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="settingtitle text"><p>Configuración</p></div>
+                         <hr>
+                         <div class="designs ">
+                              <div class="row ">
+                                   <a href="./diseño.html" class="d-flex
+                                        justify-content-between text">
+                                        <div class="col-2"><i class="fa -sharp
+                                                  fa-solid fa-images"></i></div>
+                                        <div class="col-9 ">
+                                             <p>Diseños</p>
+                                             <p>Configura la parte frontal y
+                                                  reversa de la credencial</p>
+                                        </div>
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chevron-right"></i></div>
+                                   </a>
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="setting ">
+                              <div class="row ">
+                                   <a href="./ajustes.html" class="d-flex
+                                        justify-content-between text">
+                                        <div class="col-2"><i class="fa -sharp
+                                                  fa-solid fa-gear"></i></div>
+                                        <div class="col-9 ">
+                                             <p>Ajustes</p>
+                                             <p>Configura la parte frontal y
+                                                  reversa de la credencial</p>
+                                        </div>
+                                        <div class="col-2"><i class="fa -solid
+                                                  fa-chevron-right"></i></div>
+                                   </a>
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="searchswitch text">
+                              <div class="row">
+                                   <div class="col">
+                                        <p>Busqueda de lector</p>
+                                   </div>
+                                   <div class="col-2">
+                                        <!-- Rounded switch -->
+                                        <label class="switch">
+                                             <input type="checkbox">
+                                             <span class="slider round"></span>
+                                        </label>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+
+     <!--Modal-->
+     <!-- Modal -->
+     <div class="modal fade" id="studentsModal" tabindex="-1"
+          aria-labelledby="studentsModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h1 class="modal-title fs-5" id="studentsModalLabel">Detalles
+                              de la credencial</h1>
+                         <button type="button" class="btn-close"
+                              data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="containerprincipalstudents">
+                              <div class="container text-center">
+                                   <div class="row align-items-start">
+                                        <div class="col-1 container_img">
+                                             <img
+                                                  src="https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1645716203/escolares/escuelas/9/alumnos/lxa7obvj45bprisg1tmu.jpg">
+                                        </div>
+                                        <div class="col">
+                                             <p class="text-md-start">BERUMEN
+                                                  RAMIREZ DAVID VICTOR</p>
+                                             <P class="text-md-start">Ir al
+                                                  perfil</P>
+                                        </div>
+                                        <div class="col-1">
+                                             <i class="fa -solid
+                                                  fa-chevron-right"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                   <div class="col-sm-6">
+                                        <div class="card">
+                                             <div class="card-body">
+                                                  <h5 class="card-title">Opciones</h5>
+                                                  <div class="container
+                                                       text-center">
+                                                       <div class="row
+                                                            align-items-start">
+                                                            <div class="col-1
+                                                                 container_img">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-file"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <p
+                                                                      class="text-md-start">Reimprimir</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-ellipsis"></i>
+                                                            </div>
+                                                       </div>
+                                                       <hr>
+                                                       <a data-bs-toggle="modal"
+                                                            href="#matriculaModal"
+                                                            role="button">
+                                                            <div class="row
+                                                                 align-items-start">
+                                                                 <div
+                                                                      class="col-1
+                                                                      container_img">
+                                                                      <i
+                                                                           class="fa
+                                                                           -solid
+                                                                           fa-at"></i>
+                                                                 </div>
+                                                                 <div
+                                                                      class="col">
+                                                                      <p
+                                                                           class="text-md-start">Modificar
+                                                                           datos
+                                                                           escolares</p>
+                                                                 </div>
+                                                                 <div
+                                                                      class="col-1">
+                                                                      <i
+                                                                           class="fa
+                                                                           -solid
+                                                                           fa-ellipsis"></i>
+                                                                 </div>
+
+                                                            </div>
+                                                       </a>
+                                                       <hr>
+                                                       <div class="row align-items-start">
+                                                            <div class="col">
+                                                                 <p class="text-md-start">Subir desde galeria</p>
+                                                                 <input type="file">
+                                                            </div>
+                                                           
+                                                       </div>
+                                                       <hr>
+
+                                                       <div class="row
+                                                            align-items-start">
+                                                            <div class="col-1
+                                                                 container_img">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-image"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <p
+                                                                      class="text-md-start">Usa
+                                                                      esta
+                                                                      imagen</p>
+                                                                 <P
+                                                                      class="text-md-start">Asigna
+                                                                      la imagen
+                                                                      al alumno</P>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-ellipsis"></i>
+                                                            </div>
+                                                       </div>
+                                                       <hr>
+                                                       <div class="row
+                                                            align-items-start">
+                                                            <div class="col">
+                                                                 <p
+                                                                      class="text-md-start">Imprimir</p>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <select
+                                                                      ng-options="option.name
+                                                                      for option
+                                                                      in
+                                                                      printer.options
+                                                                      track by
+                                                                      option.id"
+                                                                      ng-model="printer.A_options"
+                                                                      class="combobox">
+                                                                      <!-- Opciones del Combo -->
+                                                                 </select>
+                                                            </div>
+                                                       </div>
+                                                       <hr>
+                                                       <div class="row
+                                                            align-items-start">
+                                                            <div class="col-1">
+                                                                 <i class="fa
+                                                                      -solid
+                                                                      fa-circle-exclamation"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <p class="">Orden
+                                                                      de pago</p>
+                                                                 <p class="">credencial</p>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                   </div>
+                                   <div class="col-sm-6">
+                                        <div class="card">
+                                             <div class="card-body">
+                                                  <h5 class="card-title">Información</h5>
+                                                  <div class="row
+                                                       align-items-start">
+
+                                                       <div class="col">
+                                                            <p
+                                                                 class="text-md-start">Estatus</p>
+                                                       </div>
+                                                       <div class="col">
+                                                            <select
+                                                                 ng-options="option.name
+                                                                 for option in
+                                                                 status.options
+                                                                 track by
+                                                                 option.id"
+                                                                 ng-model="status.A_options"
+                                                                 class="combobox">
+                                                                 <!-- Opciones del Combo -->
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <hr>
+                                                  <div class="pagorealizado">
+                                                       <div class="row">
+                                                            <div class="col
+                                                                 align-items-start">
+                                                                 <p
+                                                                      class="text-md-start">Pago
+                                                                      realizado</p>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <div
+                                                                      class="col-2">
+                                                                      <!-- Rounded switch -->
+                                                                      <label
+                                                                           class="switch">
+                                                                           <input
+                                                                                type="checkbox">
+                                                                           <span
+                                                                                class="slider
+                                                                                round"></span>
+                                                                      </label>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <hr>
+                                                  <div class="pagorealizado">
+                                                       <div class="row">
+                                                            <div class="col
+                                                                 align-items-start">
+                                                                 <p
+                                                                      class="text-md-start">Impresa</p>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <div
+                                                                      class="col-2">
+                                                                      <!-- Rounded switch -->
+                                                                      <label
+                                                                           class="switch">
+                                                                           <input
+                                                                                type="checkbox">
+                                                                           <span
+                                                                                class="slider
+                                                                                round"></span>
+                                                                      </label>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <hr>
+                                                  <div class="pagorealizado">
+                                                       <div class="row">
+                                                            <div class="col
+                                                                 align-items-start">
+                                                                 <p class="text-md-start">Entregada</p>
+                                                            </div>
+                                                            <div class="col">
+                                                                 <div
+                                                                      class="col-2">
+                                                                      <!-- Rounded switch -->
+                                                                      <label
+                                                                           class="switch">
+                                                                           <input
+                                                                                type="checkbox">
+                                                                           <span
+                                                                                class="slider
+                                                                                round"></span>
+                                                                      </label>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <hr>
+                                                  <div class="pagosinput">
+                                                       <p>Credenciales UID</p>
+                                                       <input type="text"
+                                                            class="inputpagos"
+                                                            style="width: 100%;"
+                                                            placeholder="Escribe
+                                                            UID">
+                                                  </div>
+                                                  <hr>
+                                                  <div class="pagosinput">
+                                                       <p>Nota</p>
+                                                       <input type="text"
+                                                            class="inputpagos"
+                                                            style="width: 100%;"
+                                                            placeholder="Dejá
+                                                            una nota, solo
+                                                            visible para
+                                                            administradores">
+                                                  </div>
+                                             </div>
+
+                                        </div>
+                                   </div>
+
+
+                              </div>
+                         </div>
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-success"
+                                   style="width:100%;">Guardar</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+          <!-- Modal -->
+     <div class="modal fade" id="matriculaModal" tabindex="-1" aria-labelledby="matriculaModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+          <div class="modal-header">
+               <h1 class="modal-title fs-5" id="matriculaModalLabel">Detalle de la credencial</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+               <div class="containermatricula">
+                    <div class="containerstudentname">
+                         <p>Victor David Berumen Ramirez</p>
+                    </div>
+                    <br>
+                    <div class="row">
+                         <div class="col-sm-6">
+                           <div class="card">
+                             <div class="card-body">
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Perfil</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in profile.options track by option.id" ng-model="profile.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Estatus</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in statuss.options track by option.id" ng-model="statuss.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Inscrito</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in registeredd.options track by option.id" ng-model="registeredd.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Ciclo escolar curso</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in schoolperiod.options track by option.id" ng-model="schoolperiod.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Foráneo</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in Foraneo.options track by option.id" ng-model="Foraneo.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="col-sm-6">
+                           <div class="card">
+                             <div class="card-body">
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Matricula</p>
+                                        <input type="text" class="inputtext">
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Grado</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in grade.options track by option.id" ng-model="grade.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Grupo</p>
+                                        <input type="text" class="inputtext">
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Carrera/Especialidad</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in specialty.options track by option.id" ng-model="specialty.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                               <hr>
+                               <div class="row">
+                                   <div class="col">
+                                        <p>Turno</p>
+                                   </div>
+                                   <div class="col">
+                                        <select ng-options="option.name for option in shift.options track by option.id" ng-model="shift.A_options"class="combobox">
+                                        <!-- Opciones del Combo -->
+                                        </select>
+                                   </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button type="button" class="btn btn-success" style="width:100%">Guardar</button>
+          </div>
+          </div>
+          </div>
+     </div>
+     
+   
+     </body>
+</html>

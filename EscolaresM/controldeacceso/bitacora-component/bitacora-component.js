@@ -1,0 +1,1 @@
+var bitacora= angular.module('bitacora',[]);

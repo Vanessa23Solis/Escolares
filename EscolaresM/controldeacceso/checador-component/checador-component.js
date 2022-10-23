@@ -1,0 +1,1 @@
+var checador= angular.module('checador',[]);

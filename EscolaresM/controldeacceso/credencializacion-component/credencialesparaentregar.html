@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="credencializacion">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./credencialesparaentregar.css">
+     <link rel="stylesheet" href="./credencializacion.css">
+     <link rel="icon" href="https://web.escolaresmx.com/theme/img/icon.png">
+     <title>Credenciales para entregar</title>
+     
+         <!--Angular-->
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+         <!--Bootrap-->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+ 
+         <!--Font awesome-->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha512-3M00D/rn8n+2ZVXBO9Hib0GKNpkm8MSUU/e2VNthDyBYxKWG+BftNYYcuEjXlyrSO637tidzMBXfE7sQm0INUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <script src="https://kit.fontawesome.com/d2cb8774a8.js" crossorigin="anonymous"></script>
+         <!--Component credencialización-->
+         <script src="./credencializacion.js"></script>
+         <style>
+           body{
+                background-color: #f5f5f5;
+                overflow-x: hidden;
+           }
+         </style>
+</head>
+<body ng-controller="credencializacioncontroller">
+
+     <div>
+          <div class="titles">
+          <h1>Credenciales para entregar</h1>
+          </div>
+     </div>
+
+     <div class="row row-top responsive-grid-break responsive-sm">
+          <div class="col col-70">
+               <div class="card" style="width: 100%;">
+                    <ul class="list-group list-group-flush">
+                         <div class="row d-flex flex-column mb-3">
+                              <div class="col">
+                                   <div class="row">
+                                        <div class="col container-select">
+                                             <p>Diseño</p>
+                                        </div>
+                                        <div class="col">
+                                             <select ng-options="option.name for option in selection.options track by option.id" ng-model="selection.A_options" class="combobox">
+                                                  <!-- Opciones del Combo -->
+                                             </select>
+                                        </div>
+                                   </div>
+                                   <hr>
+                              </div>
+                              <div class="col">
+                                   <div class="credencialUID">
+                                        <p>CREDENCIAL UID</p>
+                                        <input type="text" placeholder="Escribe el UID ó pasa la credencial por un lector" class="inputtext">
+                                   </div>
+                                   <hr>
+                              </div>
+                              <div class="col">
+                                   <input type="submit" value="Recuperar lista" class="btn btn-primary btn-sm"></input>
+                              </div>
+                         </div>
+                    </ul>
+                  </div>
+              
+          </div>
+          <div class="col col-33">
+               <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                      El numero de credenciales es: 
+                    </div>
+                    <ul class="list-group list-group-flush">
+                         <li class="list-group-item">
+                              <label><input type="checkbox" id="cbox1" value="Ordenar por nombre"> Ordenar por nombre<label>
+
+                              <label><input type="checkbox" id="cbox1"  class="checkboxinput" value="Ordenar por grupo"> Ordenar por Grupo<label>
+                    
+                         </li>
+                         <li class="list-group-item">
+                              <p>No. de Alumnos</p>
+                              <input type="number" class="inputtext">
+                         </li>
+                         <li class="list-group-item">
+                              <p>Intervalo de tiempo</p>
+                              <input type="number" class="inputtext">
+                         </li>
+                         <li class="list-group-item">
+                              <p>Hora de inicio</p>
+                              <input type="time" class="inputtext">
+                         </li>
+                    </ul>
+                  </div>
+          </div>
+          
+     </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.titles{
+    margin: 500;
+    color: #666666;
+    font-size: 20px;  
+    text-align: center;
+   
+   }
+   
+   .f{
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    margin-top: 0;
+    height: 100px;
+    width: 1363px;
+    margin-left: 2px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.27);
+-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.27);
+   }
+
+   .button{
+    color:rgb(255, 255, 255)
+}

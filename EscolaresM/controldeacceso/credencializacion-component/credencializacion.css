@@ -1,0 +1,328 @@
+*{
+     padding: 0;
+     margin: 0;
+}
+
+.titles {
+     text-align: center;
+     margin-top: 50px;
+     margin-bottom: 20px;
+     margin: 2px solid #fff;
+     background-color: #fff;
+   }
+ 
+   .titles h1 {
+     font-size: 18px;
+   }
+
+   .btn-options{
+    width: 100%;
+    background-color: #fff;
+    border: none;
+   }
+
+   .options{
+    border-color: #fff;
+   }
+
+   .icon{
+    font-size:22px;
+    padding-top: 12px;
+   }
+
+   .title-text-options h2{
+    font-size: 18px;
+    
+   }
+
+   .title-text-options{
+    padding-top:15px;
+   }
+
+   .container-select p{
+    padding-left: 7px;
+   }
+
+   .combobox{
+    background-color: #fff;
+    
+    border: none;
+   }
+
+  .containersearch{
+    border: 0.5px solid #fff;
+    background-color: #fff;
+  }
+
+  .containerbuttons{
+    height: 84px;
+    border: 1px solid #fff;
+    background-color: #fff;
+  }
+
+  .buttons-group{
+    padding-left: 120px;
+    padding-top: 15px;
+  }
+
+  #plus-btn{
+    width: 70px;
+    height: 70px;
+    background-color: #28a54c;
+    border-color: #28a54c;
+    border-radius: 50%;
+    
+    margin-top: 320px;
+    margin-left: 150px;
+
+    box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+    -webkit-box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+    -moz-box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+  }
+
+  #basic-addon1{
+    background-color: #fff;
+    border: none;
+  }
+
+  .containersearchinput{
+    background-color: #fff;
+    border: none;
+    width: 80%;
+  }
+
+  .containersearchinput:focus{
+    outline: none;
+  }
+
+ 
+
+  .title_containermodal{
+    height: 42px;
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+  }
+
+  .title_containermodal p{
+   text-align: center;
+  }
+
+  .btn-save{
+    width: 100%;
+  }
+
+  .input{
+    border: none;
+  }
+
+  .input:focus{
+    outline: none;
+  }
+
+   /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+.groups{
+  width: 100%;
+  height: 53.6px;
+}
+
+.modal-body{
+  overflow-x: hidden;
+}
+
+.modal-body a{
+  text-decoration: none;
+  color: #111;
+}
+
+.modal-body a:hover{
+  color: #111;
+}
+
+.text p{
+  font-size: 19px;
+}
+
+
+
+.text i{
+  font-size: 19px;
+}
+
+.settingtitle{
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+.settingtitle p{
+  text-align: center;
+}
+
+.containeralumnos{
+  background-color: #fff;
+  border: #fff;
+}
+
+.btn-student{
+  background-color: #fff;
+  border: #fff;
+}
+
+.icon img{
+  width: 80px;
+  height: 80px;
+}
+
+.container_titles{
+  height: 43px;
+  background-color: #f5f5f5;
+  border: #fff;
+  width: 425.5px;
+  box-shadow: 0px -1px 5px 0px rgba(212,212,212,0.75);
+-webkit-box-shadow: 0px -1px 5px 0px rgba(212,212,212,0.75);
+-moz-box-shadow: 0px -1px 5px 0px rgba(212,212,212,0.75);
+}
+
+.container_titles h2{
+  text-align: center;
+  font-size: 18px;
+}
+
+.containercredencial a{
+  text-decoration: none;
+  color: #111;
+}
+
+.containercredencial a:hover{
+  color: #111;
+}
+
+.container_img img{
+  width: 40px;
+  height: 40px;
+}
+
+.inputpagos{
+  border: none;
+}
+
+.inputpagos:focus{
+  outline: 0;
+}
+
+.containerstudentname{
+  border: 1px solid #f5f5f5;
+  width: 100%;
+  height: 42px;
+  background-color: #f5f5f5;
+}
+
+.containerstudentname p{
+  text-align: center;
+}
+
+.inputtext{
+  width: 100%;
+  border: none;
+
+}
+
+.inputtext:focus{
+  outline: 0;
+}
+
+/*Dispositivos mobiles*/
+@media (max-width: 600px){
+
+    #plus-btn{
+      margin-left: 270px;
+    }
+          
+}
+/*Tablet*/
+@media only screen and(max-width: 768px){
+  #plus-btn{
+    margin-left: 370px;
+  }
+        
+}
+
+/*laptop*/
+@media (max-width: 992px){
+  
+    #plus-btn{
+      margin-left: 520px;
+    }
+          
+}
+
+  /*Large screen*/
+  @media (max-width: 1200px){
+    
+      #plus-btn{
+        margin-left: 170px;
+      }
+            
+  }

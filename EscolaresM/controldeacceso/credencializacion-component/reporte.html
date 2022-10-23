@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html ng-app="credencializacion">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./reporte.css">
+     <link rel="stylesheet" href="./credencializacion.css">
+     <link rel="icon" href="https://web.escolaresmx.com/theme/img/icon.png">
+     <title>Reporte</title>
+     
+         <!--Angular-->
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+         <!--Bootrap-->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+ 
+         <!--Font awesome-->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha512-3M00D/rn8n+2ZVXBO9Hib0GKNpkm8MSUU/e2VNthDyBYxKWG+BftNYYcuEjXlyrSO637tidzMBXfE7sQm0INUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <script src="https://kit.fontawesome.com/d2cb8774a8.js" crossorigin="anonymous"></script>
+         <!--Component credencialización-->
+         <script src="./credencializacion.js"></script>
+         <style>
+           body{
+                background-color: #f5f5f5;
+                overflow-x: hidden;
+           }
+         </style>
+
+
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+       google.charts.load('current', {'packages':['corechart']});
+       google.charts.setOnLoadCallback(drawChart);
+ 
+       function drawChart() {
+ 
+         var data = google.visualization.arrayToDataTable([
+           ['Task', 'Hours per Day'],
+           ['Alumnos con credencial',     2],
+           ['Alumnos sin credencial',      11],
+           
+         ]);
+ 
+         var options = {
+           title: 'Porcentaje de credencialización'
+         };
+ 
+         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+ 
+         chart.draw(data, options);
+       }
+     </script>
+
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+
+     function drawChart() {
+
+     var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['',     0],
+          ['',      0],
+          
+     ]);
+
+     var options = {
+          title: 'Pago cubierto'
+     };
+
+     var chart = new google.visualization.PieChart(document.getElementById('chart'));
+
+     chart.draw(data, options);
+     }
+     </script>
+
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+
+     function drawChart() {
+
+     var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['',     0],
+          ['',      0],
+          
+     ]);
+
+     var options = {
+          title: 'Credenciales impresas'
+     };
+
+     var chart = new google.visualization.PieChart(document.getElementById('credentials'));
+
+     chart.draw(data, options);
+     }
+     </script>
+
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+
+     function drawChart() {
+
+     var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['',     0],
+          ['',      0],
+          
+     ]);
+
+     var options = {
+          title: 'Credenciales a entregar'
+     };
+
+     var chart = new google.visualization.PieChart(document.getElementById('credentialstobedelivered'));
+
+     chart.draw(data, options);
+     }
+     </script>
+ 
+</head>
+<body ng-controller="credencializacioncontroller">
+     <div>
+          <div class="titles">
+          <h1>Reporte</h1>
+          </div>
+     </div>
+
+     <div class="filter">
+          <div class="row ">
+               <a data-bs-toggle="modal" href="#filterModal" role="button" class="d-flex justify-content-between textt">
+                    <div class="col-1 columna  icon"><i class="fa-solid fa-chart-simple"></i></div>
+                    <div class="col-9 columna">
+                         <p>Filtro</p>
+                         <p>Genera listas de alumnos según el alcance en tu credencialización</p>
+                    </div>
+                    <div class="col-2 columna icon"><i class="fa -solid fa-ellipsis "></i></div>
+               </a>
+          </div>
+     </div>
+     <div class="advance">
+          <p>Avance (Periodo activo)</p>
+     </div>
+
+     <div class="graphics">
+          <div id="piechart" style="width: 100%; height: 200px;"></div>
+          <div class="buttonsgraphics d-flex justify-content-center ">
+               <button type="button" class="btn btn-primary btn-lg"><i class="fa -solid fa-file"></i> Reporte de alumnos con credencial</button>
+               <button type="button" class="btn btn-danger btn-lg"><i class="fa -solid fa-file"></i> Reporte de alumnos sin credencial</button>
+          </div>
+     </div>
+     <br>
+     <div class="graphicschart">
+          <div id="chart" style="width: 100%; height: 200px;"></div>
+     </div>
+     <br>
+     <div class="credentias">
+          <div id="credentials" style="width: 100%; height: 200px;"></div>
+     </div>
+     <br>
+     <div class="credentialstobedelivered'">
+          <div id="credentialstobedelivered" style="width:100%; height:200px" ></div>
+     </div>
+
+     <!-- Modal filter-->
+     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-header">
+               <h1 class="modal-title fs-5" id="filterModalLabel">Filtro</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+               <div class="containerfilter">
+                    <div class="titlefilter">
+                         <p>Alumnos que cubran estas caracteristicas</p>
+                    </div>
+                    <div class="row text-filter">
+                         <div class="col">
+                              <p>Periodo</p>
+                         </div>
+                         <div class="col">
+                              <select ng-options="option.name for option in perid.options track by option.id" ng-model="perid.A_options" class="combobox">
+                                   <!-- Opciones del Combo -->
+                              </select>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button type="button" class="btn btn-success" style="width: 100%;">Consultar</button>
+          </div>
+          </div>
+          </div>
+     </div>
+   
+</body>
+</html>

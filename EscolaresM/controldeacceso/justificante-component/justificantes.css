@@ -1,0 +1,135 @@
+.titles {
+     text-align: center;
+     margin-top: 50px;
+     margin-bottom: 20px;
+     margin: 2px solid #fff;
+     background-color: #fff;
+   }
+ 
+   .titles h1 {
+     font-size: 18px;
+   }
+
+   .containeroptions a{
+     color: #111;
+     text-decoration: none;
+     font-size: 20px;
+   }
+
+   .containeroptions a:hover{
+     color: #111;
+   }
+
+   #body-card{
+     height: 56px;
+   }
+
+   .lastjustify{
+     border: 1px solid #fff; 
+     background-color: #fff;
+   }
+
+   .lastjustify p{
+     text-align: center;
+   }
+
+   .containerbodyoptions a{
+     color: #111;
+     text-decoration: none;
+     font-size: 18px;
+   }
+
+   .containerbodyoptions a:hover{
+     color: #111;
+   }
+
+   #plus-btn{
+     width: 70px;
+     height: 70px;
+     background-color: #28a54c;
+     border-color: #28a54c;
+     border-radius: 50%;
+     
+     margin-top: 320px;
+     margin-left: 170px;
+ 
+     box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+     -webkit-box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+     -moz-box-shadow: 0px -3px 0px 2px rgba(191,191,191,0.32) ;
+   }
+
+   .containerinfo{
+     font-size: 18px;
+   }
+
+   .containerjustify{
+    background-color: #fff;
+   }
+
+   .containerjustify a{
+    color: #111;
+    text-decoration: none;
+   }
+
+   .containerjustify a:hover{
+    color: #111;
+   }
+
+   .imagen img{
+    height: 40px;
+    width: 40px;
+   }
+
+   .containericon-2{
+    height: 120px;
+  }
+
+  #containerserachbuscador{
+    padding-top: 10px;
+   }
+
+   .iconsearch{
+    padding-left: 14px;
+   }
+
+   #search{
+    width: 100%;
+    border: none;
+   }
+
+   #search:focus{
+    outline: 0;
+   }
+   .containerstudentsmodal a{
+    color: #111;
+    text-decoration: none;
+  }
+  
+  .containerstudentsmodal a:hover{
+    color: #111;
+    text-decoration: none;
+  }
+  
+  .containerstudentsmodal{
+    font-size: 18px;
+  }
+
+  .image img{
+    width: 40px;
+    height: 40px;
+  }
+
+  #inputtext{
+    width: 50%;
+    border: none;
+    background-color: #fff;
+  }
+
+  #inputtext_2{
+    width: 100%;
+    border: none;
+  }
+
+  #inputtext_2:focus{
+    outline: 0;
+  }

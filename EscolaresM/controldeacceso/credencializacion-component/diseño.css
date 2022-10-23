@@ -1,0 +1,20 @@
+*{
+     padding: 0;
+     margin: 0;
+}
+
+.titles {
+     text-align: center;
+     margin-top: 50px;
+     margin-bottom: 20px;
+     margin: 2px solid #fff;
+     background-color: #fff;
+   }
+ 
+   .titles h1 {
+     font-size: 18px;
+   }
+
+   .table{
+     background-color: #fff;
+   }

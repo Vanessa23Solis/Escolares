@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html ng-app="justificante">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./firmas.css">
+     <link rel="icon"
+          href="https://web.escolaresmx.com/theme/img/icon.png">
+     <title>Firmas digitales</title>
+
+     <!--Angular-->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+     <!--Bootrap-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+     <!--Font awesome-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha512-3M00D/rn8n+2ZVXBO9Hib0GKNpkm8MSUU/e2VNthDyBYxKWG+BftNYYcuEjXlyrSO637tidzMBXfE7sQm0INUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <script src="https://kit.fontawesome.com/d2cb8774a8.js" crossorigin="anonymous"></script>
+
+     <!--Component Firmas electroinicas-->
+     <script src="./justificante-component.js"></script>
+
+ 
+     <style>
+     body{
+          background-color: #f5f5f5;
+          overflow-x: hidden;
+     }
+   </style>
+</head>
+<body ng-controller="justificantecontroller">
+     <div class="titles">
+          <p>Firmas digitales</p>
+     </div>
+
+     <div class="row">
+          <div class="col-sm-6">
+            <div class="card" ng-repeat="credencial in firmas">
+              <div class="card-body description">
+               <a data-bs-toggle="modal" href="#FirmasModal" role="button">
+                <div class="row">
+                    <div class="col imagen">
+                         <img src="{{credencial.photo}}" alt="">
+                    </div>
+                    <div class="col">
+                         <h5>{{credencial.name}}</h5>
+                         <p>
+                              {{credencial.puesto}}
+                              {{credencial.place}}
+                              {{credencial.status}}
+                         </p>
+                    </div>
+                    <div class="col d-flex justify-content-end"">
+                         <i class="fa -solid fa-chevron-right"></i>
+                    </div>
+                </div>
+               </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+               <div class="plus">
+                    <button type="button" class="btn btn-primary"
+                         data-bs-toggle="modal" data-bs-target="#plusmodal" id="plus-btn">
+                         <i class="fa-solid fa-plus"></i>
+                    </button>
+     
+               </div>
+          </div>
+        </div>
+
+        <!--Vista modal firmas-->
+        <!-- Modal -->
+     <div class="modal fade" id="FirmasModal" tabindex="-1" aria-labelledby="FirmasModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+          <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Firma</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+               <div class="active">
+                    <div class="row">
+                         <div class="col">
+                              <h5>Activa</h5>
+                              <p>La firma podra usarse en nuevos documentos</p>
+                         </div>
+                         <div class="col d-flex justify-content-end"">
+                              <!-- Rounded switch -->
+                              <label class="switch">
+                                   <input type="checkbox">
+                                   <span class="slider round"></span>
+                              </label>
+                         </div>
+
+                    </div>
+                   <hr>
+               </div>
+
+               <div class="name">
+                    <p>Nombre</p>
+                    <input type="text" class="inputtext">
+               </div>
+               <hr>
+               <div class="puesto">
+                    <p>Puesto</p>
+                    <input type="text" class="inputtext">
+               </div>
+               <hr>
+               <div class="containercanvas d-flex justify-content-center">
+                    <div class="canvascontainer d-flex justify-content-center">
+                         <canvas id="main-canvas" width="400px" height="220px"></canvas>
+                    </div>
+                   
+               </div>
+               <div class="button">
+                    <button type="button" class="btn btn-danger btn-sm">Limpiar</button>
+               </div>
+          </div>
+          <div class="modal-footer" id="footer-modal">
+               <button type="button" class="btn btn-secondary" id="btn-delete">Eliminar</button>
+               <button type="button" class="btn btn-primary" id="btn-save">Guardar</button>
+          </div>
+          </div>
+          </div>
+     </div>
+     
+     <!-- Modal -->
+     <div class="modal fade" id="plusmodal" tabindex="-1" aria-labelledby="plusmodalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+          <div class="modal-header">
+               <h1 class="modal-title fs-5" id="plusmodalLabel">Firma</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+               <div class="active">
+                    <div class="row">
+                         <div class="col">
+                              <h5>Activa</h5>
+                              <p>La firma podra usarse en nuevos documentos</p>
+                         </div>
+                         <div class="col d-flex justify-content-end"">
+                              <!-- Rounded switch -->
+                              <label class="switch">
+                                   <input type="checkbox">
+                                   <span class="slider round"></span>
+                              </label>
+                         </div>
+
+                    </div>
+                   <hr>
+               </div>
+
+               <div class="name">
+                    <p>Nombre</p>
+                    <input type="text" class="inputtext">
+               </div>
+               <hr>
+               <div class="puesto">
+                    <p>Puesto</p>
+                    <input type="text" class="inputtext">
+               </div>
+               <hr>
+               <div class="containercanvas d-flex justify-content-center">
+                    <div class="canvascontainer d-flex justify-content-center">
+                         <canvas id="main-canvas" width="400px" height="220px"></canvas>
+                    </div>
+                   
+               </div>
+               <div class="button">
+                    <button type="button" class="btn btn-danger btn-sm">Limpiar</button>
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button type="button" class="btn btn-success" style="width: 100%;">Guardar</button>
+          </div>
+          </div>
+          </div>
+     </div>
+   
+     
+     <script type="text/javascript">
+          const mainCanvas= document.getElementById("main-canvas");
+          const context= mainCanvas.getContext("2d");
+
+          let initialX; 
+          let initialY; 
+
+          const dibujar=(cursorX, cursorY)=>{
+               context.beginPath();
+               context.moveTo(initialX, initialY);
+               context.lineWidth = 5; 
+               context.strokeStyle= "#111"; 
+               context.lineCap="round"; 
+               context.lineJoin="round"; 
+               context.lineTo(cursorX, cursorY);
+               context.stroke();
+
+               initialX=cursorX;
+               initialY=cursorY;
+          };
+
+          const mouseDown=(evt)=>{
+               initialX= evt.offsetX;
+               initialY=evt.offsetY;
+               dibujar(initialX,initialY);
+               mainCanvas.addEventListener("mousemove", mouseMoving);
+          };
+
+          const mouseMoving=(evt)=>{
+               dibujar(evt.offsetX,evt.offsetY);
+          };
+
+          const mouseup=()=>{
+               mainCanvas.removeEventListener("mousemove",mouseMoving);
+          };
+
+          mainCanvas.addEventListener("mousedown",mouseDown);
+          mainCanvas.addEventListener("mouseup",mouseup);
+     </script>
+</body>
+</html>
