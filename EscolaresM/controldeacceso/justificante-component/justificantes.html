@@ -68,15 +68,15 @@
              <div class="containerstudentsjustify" >
                <div class="containerjustify" ng-repeat="justificante_2 in justificantes_2 | filter:search_justify">
                     <a href="#">
-                         <div class="row" >
-                              <div class="col col-1 imagen">
+                         <div class="d-flex flex-row" >
+                              <div class="col col-sm-1 d-flex justify-content start imagen">
                                    <img src="{{justificante_2.photo}}">
                               </div>
-                              <div class="col col-7">
-                                   <p>{{justificante_2.nombre}} - {{justificante_2.periodo}} - {{justificante_2.identificacion}}</p>
-                                   <p>{{justificante_2.fecha}} - {{justificante_2.hora}}</p>
+                              <div class="col col-7 d-flex justify-content-start text">
+                                   <p>{{justificante_2.nombre}} - {{justificante_2.periodo}} - {{justificante_2.identificacion}}
+                                   {{justificante_2.fecha}} - {{justificante_2.hora}}</p>
                               </div>
-                              <div class="col col-3 d-flex justify-content-end">
+                              <div class="col col-sm-3 d-flex justify-content-end py-3 me-2">
                                    <i class="fa -solid fa-chevron-right"></i>
                               </div>
                               <hr>
@@ -161,28 +161,25 @@
 
                <div class="row" id="containerserachbuscador">
                     <div class="col col-sm-1 " >
-                         <div class="iconsearch">
+                         <div class="">
                               <i class="fa -solid fa-magnifying-glass"></i>
                          </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-10">
                          <input type="search" ng-init="searchmodal = ''" ng-model="searchmodal" placeholder="Busca por nombre" id="search">
                     </div>
 
                     <div class="containerstudentsmodal " ng-if="searchmodal != ''">
                          <div class="row " ng-repeat="modal in studentmodal | filter: searchmodal " >
                               <a data-bs-toggle="modal" href="#justificanteModal" role="button" class="d-flex justify-content-center">
-                                   <div class="col-2 image d-flex justify-content-start">
+                                   <div class="col-md-2 col-sm-1 image d-flex justify-content-start">
                                         <img src="{{modal.photo}}" >
                                    </div>
-                                   <div class="col-7 d-flex justify-content-center">
+                                   <div class="col-md-7 col-sm-7 d-flex justify-content-center">
                                         <p>
                                              {{modal.name}}   {{modal.description}}
                                              
                                         </p>
-                                       
-                                        
-                                        
                                    </div>
                                    <div class="col-2 d-flex justify-content-end">
                                         <i class="fa -solid fa-chevron-right"></i>

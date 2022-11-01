@@ -52,6 +52,8 @@
   .containersearch{
     border: 0.5px solid #fff;
     background-color: #fff;
+    width: 353.33px; 
+    margin-top:10px;
   }
 
   .containerbuttons{
@@ -293,33 +295,81 @@ input:checked + .slider:before {
   outline: 0;
 }
 
+.body-card{
+  width: 353.33px;
+}
+
+.containeralumnos{
+  width: 353.33px;
+}
+
+.body-card-style{
+  width: 26.7rem;
+}
+
 /*Dispositivos mobiles*/
-@media (max-width: 600px){
+@media screen and (min-width:300px) and (max-width: 599px){
 
     #plus-btn{
-      margin-left: 270px;
+      margin-left: 120px;
     }
-          
+
+    .body-card{
+      width: 300px;
+    }
+
+    .containersearch{
+      width: 300px;
+    }
+    
+    .containeralumnos{
+      width: 300px;
+    }
+
+    .body-card-style{
+      width: 18rem;
+    }
+
+    .buttons-group{
+      padding-left: 79px;
+    }
 }
 /*Tablet*/
-@media only screen and(max-width: 768px){
+@media  screen and (min-width:600px) and (max-width: 768px){
   #plus-btn{
-    margin-left: 370px;
+    margin-left: 120px;
   }
-        
+
+  .body-card{
+    width: 300px;
+  }
+  
+  .containersearch{
+    width: 300px;
+  } 
+
+  .containeralumnos{
+    width: 300px;
+  }
+
+  .body-card-style{
+    width: 18rem;
+  }
 }
 
 /*laptop*/
-@media (max-width: 992px){
+@media screen and (min-width:769px) and (max-width: 992px){
   
     #plus-btn{
       margin-left: 520px;
     }
+
+  
           
 }
 
   /*Large screen*/
-  @media (max-width: 1200px){
+  @media screen and (min-width:993px) and (max-width: 1200px){
     
       #plus-btn{
         margin-left: 170px;

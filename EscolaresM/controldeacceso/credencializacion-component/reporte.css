@@ -10,6 +10,7 @@
 .filter{
      border: 1px solid #fff;
      background-color: #fff;
+     height: 96px;
 }
 
 .filter a{

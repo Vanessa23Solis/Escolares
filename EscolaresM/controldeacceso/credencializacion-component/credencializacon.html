@@ -36,26 +36,26 @@
                </div>
           </div>
 
-          <div class="row row-top responsive-grid-break responsive-sm">
-               <div class="col col-33">
-                    <div class="card" style="width: 353.33px;">
+          <div class="row g-4">
+               <div class="col-lg-4">
+                    <div class="card body-card">
                          <ul class="list-group list-group-flush">
                               <div class="row d-flex flex-column mb-3">
                                    <div class="col">
                                         <button type="button"
-                                             class="btn-options"
+                                             class=" btn-options"
                                              data-bs-toggle="modal"
                                              data-bs-target="#optionsModal">
                                              <div class="row">
-                                                  <div class="col icon">
+                                                  <div class="col col-2 d-flex justify-content-start icon">
                                                        <i class="fa -solid
                                                             fa-bars"></i>
                                                   </div>
-                                                  <div class="col
+                                                  <div class="col col-7 d-flex justify-content-start
                                                        title-text-options">
                                                        <h2>Opciones</h2>
                                                   </div>
-                                                  <div class="col icon">
+                                                  <div class="col col-2 d-flex justify-content-end icon">
                                                        <i class="fa -solid
                                                             fa-ellipsis"></i>
                                                   </div>
@@ -63,7 +63,7 @@
                                         </button>
                                         <hr>
                                    </div>
-                                   <div class="col">
+                                   <div class="col ">
                                         <div class="row">
                                              <div class="col container-select">
                                                   <p>Diseño</p>
@@ -82,198 +82,202 @@
                                         </div>
                                         <hr>
                                    </div>
-                                   <div class="col">
+                                   <div class="col ">
                                         <input type="submit" value="Generar multiple" class="btn btn-primary btn-sm"></input>
+                                   </div>
                               </div>
+                         </ul>
+                    </div>
+               
+               
+                    <div class="containersearch" >
+                         <div class="input-group mb-3" ">
+                              <div class="input-group-prepend">
+                                   <span class="input-group-text" id="basic-addon1"><i
+                                             class="fa -regular fa-magnifying-glass"></i></span>
+                              </div>
+                              <input type="text" ng-init="search_students = ''" class="containersearchinput"
+                                   ng-model="search_students" placeholder="Nombre, CURP, Matricula o UID" aria-label="Username"
+                                   aria-describedby="basic-addon1"/>
                          </div>
-                    </ul>
-               </div>
-               <div class="containersearch" style="width: 353.33px; margin-top:
-                    10px;">
-                    <div class="input-group mb-3" style="width: 353.33px;
-                         padding-top: 10px;">
-                         <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1"><i
-                                        class="fa -regular fa-magnifying-glass"></i></span>
+                    </div>
+                    <div ng-if="search_students != '' ">
+                         <div class="containeralumnos" >
+                              <div  class="row containerstudents display-flex"
+                                   ng-repeat="student in students |
+                                   filter:search_students">
+                                   <div class="col col-sm-1 studentsphoto">
+                                        <img src="{{student.photo}}" style="width: 40px;
+                                             height: 40px;">
+                                   </div>
+
+                                   <div class="col col-8 students-info align-items-center">
+                                        <button type="button" class="btn-student"
+                                             ng-click="ChangeView(student.id-1)">
+
+                                             <p>
+                                                  {{student.lastname}} {{student.name}}
+                                                  {{student.identification}}
+                                                  {{student.rol}}
+                                                  {{student.type}}
+                                                  {{student.carrer}}
+                                             </p>
+
+                                        </button>
+
+                                   </div>
+                                   <div class="col col-sm-2 icon-right2">
+                                        <i class="fa -solid fa-chevron-right"></i>
+                                   </div>
+                                   <hr>
+                              </div>
+
                          </div>
-                         <input type="text" class="containersearchinput"
-                              ng-model="search_students" placeholder="Nombre, CURP, Matricula o UID" aria-label="Username"
-                              aria-describedby="basic-addon1"/>
                     </div>
                </div>
-               <div class="containeralumnos" style="width: 353.33px;">
-                    <div class="row containerstudents display-flex"
-                         ng-repeat="student in students |
-                         filter:search_students">
-                         <div class="col col-sm-2 studentsphoto">
-                              <img src="{{student.photo}}" style="width: 40px;
-                                   height: 40px;">
-                         </div>
-
-                         <div class="col col-8 students-info align-items-center">
-                              <button type="button" class="btn-student"
-                                   ng-click="ChangeView(student.id-1)">
-
-                                   <p>
-                                        {{student.lastname}} {{student.name}}
-                                        {{student.identification}}
-                                        {{student.rol}}
-                                        {{student.type}}
-                                        {{student.carrer}}
-                                   </p>
-
-                              </button>
-
-                         </div>
-                         <div class="col col-sm-2 icon-right2">
-                              <i class="fa -solid fa-chevron-right"></i>
-                         </div>
-                         <hr>
-                    </div>
-
-               </div>
-          </div>
-          <div class="col col-33">
-               <div class="info" ng-repeat="student in students"
-                    ng-if="student.view!='invisible'">
-                    <div class="col-lg-4">
-                         <div class="container_titles">
-                              <h2 class="h3">Historial</h2>
-                         </div>
-                         <div>
-                              <div class="containercredencial"
-                                   ng-repeat="credencial in students_credencial
-                                   | filter: {id_student:student.id}">
-                                   <div class="card " style="width: 26.7rem;">
-                                        <div class="card-body">
-                                             <h5 class="card-title">{{credencial.name}}</h5>
-                                             <div class="row">
-                                                  <div class="col-4 icon">
-                                                       <img
-                                                            src="{{credencial.photo}}"
-                                                            alt="">
-                                                  </div>
-                                                  <div class="col-7">
-                                                       <div class="row">
-                                                            <a
-                                                                 data-bs-toggle="modal"
-                                                                 href="#studentsModal"
-                                                                 role="button">
-                                                                 <div
-                                                                      class="col">
-                                                                      <p>Creada:
-                                                                           {{credencial.create}}
-                                                                           /
-                                                                           Modificada:
-                                                                           {{credencial.update}}</p>
+          
+               <div class="col-lg-4">
+                    <div class="info" ng-repeat="student in students"
+                         ng-if="student.view!='invisible'">
+                         <div class="col-lg-4">
+                              <div class="container_titles">
+                                   <h2 class="h3">Historial</h2>
+                              </div>
+                              <div>
+                                   <div class="containercredencial"
+                                        ng-repeat="credencial in students_credencial
+                                        | filter: {id_student:student.id}">
+                                        <div class="card body-card-style" >
+                                             <div class="card-body">
+                                                  <h5 class="card-title">{{credencial.name}}</h5>
+                                                  <div class="row">
+                                                       <div class="col-4 icon">
+                                                            <img
+                                                                 src="{{credencial.photo}}"
+                                                                 alt="">
+                                                       </div>
+                                                       <div class="col-7">
+                                                            <div class="row">
+                                                                 <a
+                                                                      data-bs-toggle="modal"
+                                                                      href="#studentsModal"
+                                                                      role="button">
+                                                                      <div
+                                                                           class="col">
+                                                                           <p>Creada:
+                                                                                {{credencial.create}}
+                                                                                /
+                                                                                Modificada:
+                                                                                {{credencial.update}}</p>
+                                                                      </div>
+                                                                 </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                 <div class="col-1">
+                                                                      <i class="fa
+                                                                           -solid
+                                                                           fa-camera"></i>
                                                                  </div>
-                                                            </a>
-                                                       </div>
-                                                       <div class="row">
-                                                            <div class="col-1">
-                                                                 <i class="fa
-                                                                      -solid
-                                                                      fa-camera"></i>
+                                                                 <div class="col">
+                                                                      <p>Tomar
+                                                                           fotografia</p>
+                                                                      <p>Subir a esta
+                                                                           credencial</p>
+                                                                 </div>
+                                                                 <div class="col-1 checkboxpicture">
+                                                                      <input type="checkbox" id="mycheck"><label for="mycheck"></label>
+                                                                 </div>
                                                             </div>
-                                                            <div class="col">
-                                                                 <p>Tomar
-                                                                      fotografia</p>
-                                                                 <p>Subir a esta
-                                                                      credencial</p>
+                                                            <div class="row">
+                                                                 <div class="col"><p>Brillo</p></div>
+                                                                 <div class="col">
+                                                                      <select
+                                                                           ng-options="option.name
+                                                                           for option
+                                                                           in
+                                                                           brillo.options
+                                                                           track by
+                                                                           option.id"
+                                                                           ng-model="brillo.A_options"
+                                                                           class="combobox">
+                                                                           <!-- Opciones del Combo -->
+                                                                      </select>
+                                                                 </div>
                                                             </div>
-                                                            <div class="col-1 checkboxpicture">
-                                                                 <input type="checkbox" id="mycheck"><label for="mycheck"></label>
+                                                            <div class="row">
+                                                                 <div class="col-1">
+                                                                      <i class="fa
+                                                                           -solid
+                                                                           fa-file"></i>
+                                                                 </div>
+                                                                 <div class="col">
+                                                                      <p>Credencial
+                                                                           Duplex</p>
+                                                                      <p>Diseño
+                                                                           Frontal y
+                                                                           reverso</p>
+                                                                 </div>
                                                             </div>
-                                                       </div>
-                                                       <div class="row">
-                                                            <div class="col"><p>Brillo</p></div>
-                                                            <div class="col">
-                                                                 <select
-                                                                      ng-options="option.name
-                                                                      for option
-                                                                      in
-                                                                      brillo.options
-                                                                      track by
-                                                                      option.id"
-                                                                      ng-model="brillo.A_options"
-                                                                      class="combobox">
-                                                                      <!-- Opciones del Combo -->
-                                                                 </select>
-                                                            </div>
-                                                       </div>
-                                                       <div class="row">
-                                                            <div class="col-1">
-                                                                 <i class="fa
-                                                                      -solid
-                                                                      fa-file"></i>
-                                                            </div>
-                                                            <div class="col">
-                                                                 <p>Credencial
-                                                                      Duplex</p>
-                                                                 <p>Diseño
-                                                                      Frontal y
-                                                                      reverso</p>
-                                                            </div>
+
                                                        </div>
 
                                                   </div>
 
                                              </div>
-
                                         </div>
+
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               
+               <div class="col-lg-4">
+                    <div class="containerbuttons">
+                         <div class="card-body border-bottom"
+                              ng-if="view_camera==true">
+                              <div class="text-center">
+                                   <video id="camera_video" class="img-fluid"
+                                        autoplay ng-if="camera_error==''"></video>
+                                   <div class="text-center" ng-if="camera_error!=''">
+                                        <i class="fa-solid fa-triangle-exclamation
+                                             fs-1 text-warning"></i>
+                                        <p class="fs-3 m-0 fw-bold">{{camera_error}}</p>
                                    </div>
 
                               </div>
                          </div>
-                    </div>
-               </div>
-          </div>
-          <div class="col col-75">
-               <div class="containerbuttons">
-                    <div class="card-body border-bottom"
-                         ng-if="view_camera==true">
-                         <div class="text-center">
-                              <video id="camera_video" class="img-fluid"
-                                   autoplay ng-if="camera_error==''"></video>
-                              <div class="text-center" ng-if="camera_error!=''">
-                                   <i class="fa-solid fa-triangle-exclamation
-                                        fs-1 text-warning"></i>
-                                   <p class="fs-3 m-0 fw-bold">{{camera_error}}</p>
+                         <div class="btn-group buttons-group" role="group"
+                              aria-label="Basic example">
+                              <button type="button" class="btn btn-success btn-lg"
+                                   ng-click="cameraOn()"><i class="fa -solid
+                                        fa-power-off"></i></button>
+                              <button type="button" class="btn btn-danger btn-lg"
+                                   ng-click="cameraOff()"><i class="fa -solid
+                                        fa-power-off"></i></button>
+                              <button type="button" class="btn btn-primary btn-lg"
+                                   ng-click="getSnapshot()"><i class="fa -regular
+                                        fa-camera"></i></button>
+                         </div>
+                         <div class="card-body border-top {{view_snapshot}}">
+                              <div class="text-center">
+                                   <canvas style="display: none" id="canvas"
+                                        width="640" height="480"></canvas>
+                                   <img id="Snapshot" class="img-fluid" src="" />
                               </div>
-
                          </div>
                     </div>
-                    <div class="btn-group buttons-group" role="group"
-                         aria-label="Basic example">
-                         <button type="button" class="btn btn-success btn-lg"
-                              ng-click="cameraOn()"><i class="fa -solid
-                                   fa-power-off"></i></button>
-                         <button type="button" class="btn btn-danger btn-lg"
-                              ng-click="cameraOff()"><i class="fa -solid
-                                   fa-power-off"></i></button>
-                         <button type="button" class="btn btn-primary btn-lg"
-                              ng-click="getSnapshot()"><i class="fa -regular
-                                   fa-camera"></i></button>
-                    </div>
-                    <div class="card-body border-top {{view_snapshot}}">
-                         <div class="text-center">
-                              <canvas style="display: none" id="canvas"
-                                   width="640" height="480"></canvas>
-                              <img id="Snapshot" class="img-fluid" src="" />
-                         </div>
-                    </div>
-               </div>
 
-               <div class="plus">
-                    <button type="button" class="btn btn-primary"
-                         data-bs-toggle="modal" data-bs-target="#plusmodal"
-                         id="plus-btn">
-                         <i class="fa-solid fa-plus"></i>
-                    </button>
+                    <div class="plus">
+                         <button type="button" class="btn btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#plusmodal"
+                              id="plus-btn">
+                              <i class="fa-solid fa-plus"></i>
+                         </button>
 
+                    </div>
                </div>
           </div>
-     </div>
 
      <!--Vistas modales de credencialización-->
      <!--Vista modal plus-->
@@ -506,7 +510,7 @@
                                    <div class="col">
                                         <p>Busqueda de lector</p>
                                    </div>
-                                   <div class="col-2">
+                                   <div class="col-3">
                                         <!-- Rounded switch -->
                                         <label class="switch">
                                              <input type="checkbox">

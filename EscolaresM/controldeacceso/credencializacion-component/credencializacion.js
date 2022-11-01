@@ -73,10 +73,32 @@ credencializacion.controller('credencializacioncontroller', function ($scope){
      $scope.students = [
           { id: '1', name: 'David Victor', lastname: 'Berumen Ramirez',view:'invisible', identification: "ID-16071", rol: "ALUMNO", type:'DEMO0831902', carrer:'1A Ingeneria en software TV ',photo: 'https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1645716203/escolares/escuelas/9/alumnos/lxa7obvj45bprisg1tmu.jpg' },
           { id: '2', name: 'David Victor', lastname: 'Berumen Ramirez',view:'invisible', identification: "ID-16071", rol: "ALUMNO", type:'DEMO0831902', carrer:'1A Ingeneria en software TV ',photo: 'https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1645716203/escolares/escuelas/9/alumnos/lxa7obvj45bprisg1tmu.jpg' },
-          {id: '3', name:'Gabriel', lastname:'Ibarra Martinez', view:'invisible', identification: "ID-16071", rol: "ALUMNO", type:'DEMO0831902', carrer:'1A Ingeneria en software TV ',photo: 'https://res.cloudinary.com/cdn-dh01/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.8/v1564526113/escolares/escuelas/9/alumnos/tmkv21uyqmbp1gblohwm.jpg'}
-          ]
+          {id: '3', name:'Gabriel', lastname:'Ibarra Martinez', view:'invisible', identification: "ID-16071", rol: "ALUMNO", type:'DEMO0831902', carrer:'1A Ingeneria en software TV ',photo: 'https://res.cloudinary.com/cdn-dh01/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.8/v1564526113/escolares/escuelas/9/alumnos/tmkv21uyqmbp1gblohwm.jpg'},
+          {id:'4', name:'Lilith', lastname:'Lopez Diaz', view:'invisible', identification:'ID-16069', rol:'Alumno', type:'ABC123', carrer:'4D Ingeneria en software TV', photo:'https://res.cloudinary.com/cdn-dh13/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1626717200/escolares/escuelas/9/alumnos/y7kvgwvt7gvkjjuwqwse.jpg'},
+          {id:'5', name:'Alicia', lastname:'Zapata Bravo', view:'invisible', identification:'ID-16072', rol:'Alumno', type:'1000001', carrer:'3B ARH TM', photo:'https://res.cloudinary.com/cdn-dh02/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1565040558/escolares/escuelas/9/alumnos/lmk6mucpq2n12k8jke8c.jpg'},
+          {id:'6', name:'Gustavo', lastname:'Garcia Zaragoza', view:'invisible', identification:'ID-16244', rol:'Alumno', type:'1000002', carrer:'1A Ingeneria en software TV', photo:'https://res.cloudinary.com/cdn-dh15/image/upload/v1657740320/web/sitios/17/sliders/g4blqheytzqpxjqhstpy.png'},
+          {id:'7', name:'Alicia', lastname:'Murillo Amador', view:'invisible', identification:'ID-16245', rol:'Alumno', type:'DEMO0800517', carrer:'3B ISW TV', photo:'https://res.cloudinary.com/cdn-dh16/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1626806111/escolares/escuelas/9/alumnos/wj17gdn5s9oyg8d8dkaj.jpg'},
+          {id:'8', name:'Rick', lastname:'Martinez Flores', view:'invisible', identification:'ID-16430', rol:'Alumno', type:'DEMO0803098', carrer:'3B ISW TV', photo:'https://res.cloudinary.com/cdn-dh15/image/upload/v1657740320/web/sitios/17/sliders/g4blqheytzqpxjqhstpy.png'},
+          {id:'9', name:'Erika', lastname:'Zavala Maturino', view:'invisible', identification:'ID-16441', rol:'Alumno', type:'DEMO0644519', carrer:'1A Ingeneria en software TV', photo:'https://res.cloudinary.com/cdn-dh15/image/upload/v1657740320/web/sitios/17/sliders/g4blqheytzqpxjqhstpy.png'},
+          {id:'10', name:'Mildred', lastname:'Sosa Garcia', view:'invisible', identification:'ID-16452', rol:'Alumno', type:'DEMO0242816', carrer:'1A ISW TM', photo:'https://res.cloudinary.com/cdn-dh04/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1567607094/escolares/escuelas/9/alumnos/oqgy1nmrj6gigr1lidrh.jpg'},
+          
+          
+          
+        ]
      $scope.students_credencial=[
-          {id:'1', name: 'Victor David Berumen Ramirez ', create: '2022-02-22 22:03:28', update: '2022-02-24 09:23:24', id_student:'1', photo:'https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1645716203/escolares/escuelas/9/alumnos/lxa7obvj45bprisg1tmu.jpg' }
+          {id:'1', name: 'Victor David Berumen Ramirez ', create: '2022-02-22 22:03:28', update: '2022-02-24 09:23:24', id_student:'1', photo:'https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1645716203/escolares/escuelas/9/alumnos/lxa7obvj45bprisg1tmu.jpg' },
+          {id:'2', name:'Victor David Berumen Ramirez', create:'2022-10-17 20:33:18' ,update:'2022-10-17 22:20:53', id_student:'1', photo:'https://res.cloudinary.com/cdn-dh15/image/upload/v1657740320/web/sitios/17/sliders/g4blqheytzqpxjqhstpy.png'},
+          {id:'3', name:'Victor David Berumen Ramirez', create:'2021-10-04 09:00:53' ,update:'2022-02-22 22:34:16', id_student:'1', photo:'https://res.cloudinary.com/cdn-dh14/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.8/v1645590855/escolares/escuelas/9/alumnos/hvcv44ggcr9yuawgwsuh.jpg'},
+
+          {id:'4', name:'Victor David Berumen Ramirez', create:' 2019-07-30 17:30:21' ,update:'2020-09-28 13:14:38', id_student:'2', photo:'https://res.cloudinary.com/cdn-dh01/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.8/v1564526113/escolares/escuelas/9/alumnos/tmkv21uyqmbp1gblohwm.jpg'},
+            
+          {id:'5', name:'Gabriel Ibarra Martinez', create:' 2019-07-30 17:30:21' ,update:'2020-09-28 13:14:38', id_student:'3', photo:'https://res.cloudinary.com/cdn-dh01/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.8/v1564526113/escolares/escuelas/9/alumnos/tmkv21uyqmbp1gblohwm.jpg'},
+            
+
+          {id:'6', name: 'Lilith Lopez Diaz ', create: '2022-02-22 22:03:28', update: '2022-02-24 09:23:24', id_student:'4', photo:'https://res.cloudinary.com/cdn-dh02/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1565040558/escolares/escuelas/9/alumnos/lmk6mucpq2n12k8jke8c.jpg' },
+
+          
+          {id:'7', name: 'Alicia Zapata Bravo', create: '2022-02-22 22:03:28', update: '2022-02-24 09:23:24', id_student:'4', photo:'https://res.cloudinary.com/cdn-dh02/image/upload/c_thumb,h_256,q_auto,w_256,g_face,r_max,z_0.1,e_brightness_hsb/v1565040558/escolares/escuelas/9/alumnos/lmk6mucpq2n12k8jke8c.jpg' },
      ]
 
      $scope.brillo={
